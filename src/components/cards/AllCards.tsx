@@ -49,6 +49,16 @@ const AllCards = () => {
     setIsOpen(!state);
   };
 
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const onConfirmDelete = () => {
+    console.log("Deleted it");
+    setIsOpen(false);
+    setActiveMenuIndex(null);
+  };
+
   const toggleMenu = (index: number) => {
     if (activeMenuIndex === index) {
       setActiveMenuIndex(null);
@@ -187,7 +197,13 @@ const AllCards = () => {
         </div>
 
         {/* modal goes here */}
-        {isOpen && <EditModal isOpen={isOpen} />}
+        {isOpen && (
+          <EditModal
+            isOpen={isOpen}
+            onClose={closeModal}
+            onConfirm={onConfirmDelete}
+          />
+        )}
       </div>
     </div>
   );

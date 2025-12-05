@@ -18,3 +18,15 @@ function App() {
 }
 
 export default App;
+
+/* 
+1) user profile
+2) fix navbar - profile or logout button, 
+3) study page 
+4) edit modal
+5) preview modal for the ai generated questions
+6) footer
+7) landing-page
+8) toast notification
+9) review the menu place
+*/
