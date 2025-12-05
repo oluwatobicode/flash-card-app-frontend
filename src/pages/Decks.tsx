@@ -1,4 +1,4 @@
-import AllCards from "../components/decks/AllCards";
+import AllCards from "../components/decks/AllDecks";
 import CreateDecks from "../components/decks/CreateDecks";
 import Navbar from "../ui/Navbar";
 

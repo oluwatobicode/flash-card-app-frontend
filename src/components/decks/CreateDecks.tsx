@@ -33,7 +33,7 @@ const CreateDecks = () => {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="deckName"
-                className="block font-bold text-[#2E1401]"
+                className="block font-semi text-[#2E1401]"
               >
                 Deck Name
               </label>
