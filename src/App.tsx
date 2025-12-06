@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Decks from "./pages/Decks";
 import Cards from "./pages/Cards";
+import Study from "./pages/Study";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/decks" element={<Decks />} />
         <Route path="/decks/:id" element={<Cards />} />
+        <Route path="/study/:id" element={<Study />} />
       </Routes>
     </BrowserRouter>
   );
@@ -20,13 +22,11 @@ function App() {
 export default App;
 
 /* 
+2) fix navbar - profile or logout button, ✅
+3) study page  ✅
+4) edit modal ✅
 1) user profile
-2) fix navbar - profile or logout button, 
-3) study page 
-4) edit modal
 5) preview modal for the ai generated questions
+7) custom toast notification
 6) footer
-7) landing-page
-8) toast notification
-9) review the menu place
 */

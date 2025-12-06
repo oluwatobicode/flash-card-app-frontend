@@ -61,13 +61,18 @@ const AllDecks = () => {
             <div className="p-4 grid grid-cols-2 gap-3  border-t border-[#2E1401]">
               <button
                 onClick={() => {
-                  navigate(`/decks/${deck.id}`);
+                  navigate(`/decks/${deck.title}`);
                 }}
                 className="flex items-center cursor-pointer justify-center gap-2 border border-black rounded-lg h-[40px] font-semibold text-sm hover:bg-gray-100 transition-colors"
               >
                 View
               </button>
-              <button className="flex items-center cursor-pointer justify-center gap-2 bg-[#F8CB46] border border-black rounded-lg h-[40px] font-bold text-sm shadow-[2px_2px_0px_0_#000] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-none transition-all">
+              <button
+                onClick={() => {
+                  navigate(`/study/${deck.title}`);
+                }}
+                className="flex items-center cursor-pointer justify-center gap-2 bg-[#F8CB46] border border-black rounded-lg h-[40px] font-bold text-sm shadow-[2px_2px_0px_0_#000] hover:translate-y-[1px] hover:translate-x-[1px] hover:shadow-none transition-all"
+              >
                 Study Now
               </button>
             </div>

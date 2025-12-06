@@ -8,6 +8,8 @@ import {
 import { useState } from "react";
 import AddCardForm from "./AddCardForm";
 import EditModal from "../../ui/EditModal";
+import DeleteModal from "../../ui/DeleteModal";
+import { useNavigate, useParams } from "react-router";
 
 interface Cards {
   question: string;
@@ -41,21 +43,35 @@ const allCards: Cards[] = [
 ];
 
 const AllCards = () => {
+  const params = useParams();
+  console.log(params);
+  const id = params.id;
+  const navigate = useNavigate();
+
   const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
+  const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
   const [activeMenuIndex, setActiveMenuIndex] = useState<number | null>(null);
 
   const openModal = (state: boolean) => {
-    setIsOpen(!state);
+    setIsDeleteOpen(!state);
   };
 
   const closeModal = () => {
-    setIsOpen(false);
+    setIsDeleteOpen(false);
+  };
+
+  const openEdtModal = (state: boolean) => {
+    setIsEditOpen(!state);
+  };
+
+  const closeEditModal = () => {
+    setIsEditOpen(false);
   };
 
   const onConfirmDelete = () => {
     console.log("Deleted it");
-    setIsOpen(false);
+    setIsDeleteOpen(false);
     setActiveMenuIndex(null);
   };
 
@@ -86,7 +102,12 @@ const AllCards = () => {
             JavaScript
           </h1>
 
-          <button className="px-4 py-2 sm:px-6 sm:py-2.5 rounded-full bg-white border border-[#2e1401] shadow-[3px_3px_0_0px_#000] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0_0px_#000] transition-all font-medium text-sm sm:text-base">
+          <button
+            onClick={() => {
+              navigate(`/study/${id}`);
+            }}
+            className="px-4 py-2 sm:px-6 sm:py-2.5 rounded-full bg-white border border-[#2e1401] shadow-[3px_3px_0_0px_#000] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0_0px_#000] transition-all font-medium text-sm sm:text-base"
+          >
             Study now
           </button>
         </div>
@@ -168,7 +189,7 @@ const AllCards = () => {
                   {activeMenuIndex === index && (
                     <div className="absolute bottom-[110%] right-2 w-[140px] bg-white border border-[#2e1401]  rounded-[12px] overflow-hidden z-20 flex flex-col animate-in fade-in zoom-in-95 duration-100 origin-bottom-right">
                       <button
-                        onClick={() => console.log("Edit clicked")}
+                        onClick={() => openEdtModal(isEditOpen)}
                         className="flex items-center cursor-pointer gap-3 w-full px-4 py-3 text-sm font-bold text-[#2E1401] transition-colors text-left border-b border-[#2e1401]"
                       >
                         <SquarePen size={16} />
@@ -176,7 +197,7 @@ const AllCards = () => {
                       </button>
 
                       <button
-                        onClick={() => openModal(isOpen)}
+                        onClick={() => openModal(isDeleteOpen)}
                         className="flex items-center gap-3 w-full px-4 py-3 text-sm font-bold text-red-600 cursor-pointer transition-colors text-left"
                       >
                         <Trash2 size={16} />
@@ -196,10 +217,13 @@ const AllCards = () => {
           </button>
         </div>
 
-        {/* modal goes here */}
-        {isOpen && (
-          <EditModal
-            isOpen={isOpen}
+        {isEditOpen && (
+          <EditModal isOpen={isEditOpen} onClose={closeEditModal} />
+        )}
+
+        {isDeleteOpen && (
+          <DeleteModal
+            isOpen={isDeleteOpen}
             onClose={closeModal}
             onConfirm={onConfirmDelete}
           />
