@@ -4,6 +4,7 @@ import SignUp from "./pages/SignUp";
 import Decks from "./pages/Decks";
 import Cards from "./pages/Cards";
 import Study from "./pages/Study";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/decks" element={<Decks />} />
         <Route path="/decks/:id" element={<Cards />} />
         <Route path="/study/:id" element={<Study />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
@@ -25,8 +27,9 @@ export default App;
 2) fix navbar - profile or logout button, ✅
 3) study page  ✅
 4) edit modal ✅
-1) user profile
+6) footer ✅
+1) user profile ✅
 5) preview modal for the ai generated questions
 7) custom toast notification
-6) footer
+8) a forgot password flow user recives email -> opt-> forget password form -> login back
 */

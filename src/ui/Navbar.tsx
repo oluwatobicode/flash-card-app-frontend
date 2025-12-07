@@ -3,7 +3,7 @@ import { NavLink, useParams } from "react-router";
 
 const Navbar = () => {
   const params = useParams();
-  const currentDeckId = params.id; // Use a descriptive name
+  const currentDeckId = params.id;
 
   const linkStyles = ({ isActive }: { isActive: boolean }) =>
     `h-[80%] px-3 md:px-5 flex items-center justify-center rounded-full text-xs md:text-sm font-semibold transition-all duration-200 whitespace-nowrap
@@ -34,8 +34,7 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        {/* LOGOUT: Hidden on mobile (Assuming you put a logout button inside the Profile page for mobile) */}
-        <div className="absolute right-4 md:static shrink-0 hidden md:block">
+        <div className="absolute right-4 md:static shrink-0 hidden  md:flex items-center justify-center border border-[#2E1401] h-14 w-14 rounded-full shadow-[3px_3px_0_0px_#2E1401] cursor-pointer">
           <button
             className="text-[#2E1401] font-bold hover:translate-x-[1px] hover:translate-y-[1px] transition-transform"
             aria-label="Logout"

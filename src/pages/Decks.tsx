@@ -1,5 +1,6 @@
 import AllCards from "../components/decks/AllDecks";
 import CreateDecks from "../components/decks/CreateDecks";
+import Footer from "../ui/Footer";
 import Navbar from "../ui/Navbar";
 
 const Decks = () => {
@@ -10,6 +11,7 @@ const Decks = () => {
         <CreateDecks />
         <AllCards />
       </main>
+      <Footer />
     </>
   );
 };

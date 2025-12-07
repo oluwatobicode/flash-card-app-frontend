@@ -1,5 +1,6 @@
 import DeckStatistics from "../components/app/DeckStatistics";
 import StudyMode from "../components/app/StudyMode";
+import Footer from "../ui/Footer";
 import Navbar from "../ui/Navbar";
 
 const Study = () => {
@@ -13,6 +14,7 @@ const Study = () => {
         </div>
         <DeckStatistics />
       </div>
+      <Footer />
     </div>
   );
 };
