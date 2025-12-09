@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { notify } from "../../utils/notify";
 
 const UserLoginSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -21,11 +22,16 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<UserLoginFormData>({
     resolver: zodResolver(UserLoginSchema),
+    defaultValues: {
+      email: "odetokuntreasure6@gmail.com",
+      password: "Treasure@123",
+    },
   });
 
   const onSubmit: SubmitHandler<UserLoginFormData> = (data) => {
     console.log("Login Data Submitted:", data);
-    navigate("/");
+    // navigate("/decks");
+    notify.success("Logged in successfully!");
   };
 
   return (

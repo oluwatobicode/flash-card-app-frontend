@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { notify } from "../../utils/notify";
 
 // Define the form data type
 type FormData = {
@@ -14,6 +15,7 @@ const CreateDecks = () => {
 
   const onSubmit = (data: FormData) => {
     console.log("Deck Created:", data);
+    notify.success("Deck created successfully!");
   };
 
   return (

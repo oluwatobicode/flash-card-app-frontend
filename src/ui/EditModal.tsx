@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import { useEffect } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import z from "zod";
+import { notify } from "../utils/notify";
 
 const EditFormSchema = z.object({
   cardQuestion: z.string().min(3, { message: "Question is too short" }),
@@ -45,6 +46,7 @@ const EditModal = ({ isOpen, onClose, initialData }: EditModalProps) => {
   const onSubmit: SubmitHandler<EditFormData> = (data) => {
     console.log("Updated Data:", data);
     onClose();
+    notify.success("Card updated successfully.");
   };
 
   if (!isOpen) return null;

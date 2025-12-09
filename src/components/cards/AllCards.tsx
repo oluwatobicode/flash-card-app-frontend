@@ -10,6 +10,7 @@ import AddCardForm from "./AddCardForm";
 import EditModal from "../../ui/EditModal";
 import DeleteModal from "../../ui/DeleteModal";
 import { useNavigate, useParams } from "react-router";
+import { notify } from "../../utils/notify";
 
 interface Cards {
   question: string;
@@ -73,6 +74,7 @@ const AllCards = () => {
     console.log("Deleted it");
     setIsDeleteOpen(false);
     setActiveMenuIndex(null);
+    notify.success("Card deleted.");
   };
 
   const toggleMenu = (index: number) => {
@@ -98,9 +100,11 @@ const AllCards = () => {
             <ArrowLeft color="#000" size={20} />
           </button>
 
-          <h1 className="text-[18px] md:text-[24px] lg:text-[32px] font-bold text-[#2E1401]">
-            JavaScript
-          </h1>
+          <div>
+            <h1 className="text-[18px] md:text-[24px] lg:text-[32px] font-bold text-[#2E1401]">
+              JavaScript Deck
+            </h1>
+          </div>
 
           <button
             onClick={() => {
@@ -115,7 +119,7 @@ const AllCards = () => {
         <div className="flex items-center mt-4 justify-center w-full">
           {isFormOpen ? (
             <AddCardForm
-              currentDeck="Javascript"
+              currentDeck="Javascript "
               onClose={() => {
                 setIsFormOpen(false);
               }}
@@ -179,7 +183,7 @@ const AllCards = () => {
                       e.stopPropagation();
                       toggleMenu(index);
                     }}
-                    className={`p-1 rounded-full hover:bg-gray-100 transition-colors ${
+                    className={`p-1 rounded-full cursor-pointer hover:bg-gray-100 transition-colors ${
                       activeMenuIndex === index ? "bg-gray-100" : ""
                     }`}
                   >

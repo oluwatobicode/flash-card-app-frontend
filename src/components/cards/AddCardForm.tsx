@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import z from "zod";
 import { useDropzone } from "react-dropzone";
+import { notify } from "../../utils/notify";
 
 const CardFormSchema = z.object({
   cardQuestion: z.string().min(3, { message: "Question is too short" }),
@@ -32,6 +33,7 @@ const AddCardForm = ({ currentDeck, onClose }: AddCardFormProps) => {
   });
 
   const onManualSubmit: SubmitHandler<CardFormData> = (data) => {
+    notify.success("Card created successfully.");
     console.log("Adding Manual Card to", currentDeck, ":", data);
     reset();
     // Add logic to refresh list
@@ -53,6 +55,7 @@ const AddCardForm = ({ currentDeck, onClose }: AddCardFormProps) => {
   const handlePdfUpload = async () => {
     if (!uploadedFile) return;
     setIsUploading(true);
+    notify.success("Card created successfully.");
 
     // Simulate API Call
   };
