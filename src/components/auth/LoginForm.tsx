@@ -30,7 +30,7 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<UserLoginFormData> = (data) => {
     console.log("Login Data Submitted:", data);
-    // navigate("/decks");
+    navigate("/decks");
     notify.success("Logged in successfully!");
   };
 
