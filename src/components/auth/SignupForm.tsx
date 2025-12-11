@@ -36,6 +36,7 @@ const SignUpForm = () => {
 
   const onSubmit: SubmitHandler<UserSignupFormData> = (data) => {
     console.log("Login Data Submitted:", data);
+    navigate("/decks");
   };
 
   return (
@@ -130,7 +131,7 @@ const SignUpForm = () => {
         <button
           type="button"
           onClick={() => {
-            navigate("/login");
+            navigate("/");
           }}
           className="text-right cursor-pointer text-sm sm:text-base"
         >
